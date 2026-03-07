@@ -18,11 +18,10 @@
   "homepage": "https://docs.studyplug.org",
   "repository": {
     "type": "git",
-    "url": "https://github.com/9001-Solutions/study-plug",
-    "directory": "packages/sdk"
+    "url": "https://github.com/9001-Solutions/study-plug-sdk"
   },
   "bugs": {
-    "url": "https://github.com/9001-Solutions/study-plug/issues"
+    "url": "https://github.com/9001-Solutions/study-plug-sdk/issues"
   },
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts",

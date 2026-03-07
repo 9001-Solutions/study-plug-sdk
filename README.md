@@ -3,7 +3,7 @@
 TypeScript SDK for the [StudyPlug API](https://api.studyplug.org) — generate educational content for K-8 math, reading, vocabulary, spelling, and science.
 
 [![npm version](https://img.shields.io/npm/v/studyplug.svg)](https://www.npmjs.com/package/studyplug)
-[![license](https://img.shields.io/npm/l/studyplug.svg)](https://github.com/9001-Solutions/study-plug/blob/master/LICENSE)
+[![license](https://img.shields.io/npm/l/studyplug.svg)](https://github.com/9001-Solutions/study-plug-sdk/blob/master/LICENSE)
 
 ## Install
 
@@ -98,7 +98,7 @@ const sp = new StudyPlug({
 
 - [Documentation](https://docs.studyplug.org)
 - [API Reference](https://docs.studyplug.org/api-reference/)
-- [GitHub](https://github.com/9001-Solutions/study-plug)
+- [GitHub](https://github.com/9001-Solutions/study-plug-sdk)
 - [Request an API Key](https://docs.studyplug.org/request-key/)
 
 ## License
