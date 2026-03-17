@@ -11,11 +11,11 @@ export class GenerateResource {
 
   /** Generate a batch of content items. */
   async batch(params: GenerateParams): Promise<GenerateResponse> {
-    return this.http.post("/api/v1/generate", params);
+    return this.http.post("/api/v1/problems", params);
   }
 
   /** Generate a single content item. */
   async single(params: SingleGenerateParams): Promise<SingleGenerateResponse> {
-    return this.http.post("/api/v1/generate/single", params);
+    return this.http.post("/api/v1/problems/single", params);
   }
 }

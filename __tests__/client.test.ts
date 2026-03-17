@@ -84,7 +84,7 @@ describe("StudyPlug", () => {
       expect(result).toEqual(mockResponse);
       expect(fetchFn).toHaveBeenCalledOnce();
       const [url, init] = fetchFn.mock.calls[0];
-      expect(url).toBe("http://localhost:3001/api/v1/generate");
+      expect(url).toBe("http://localhost:3001/api/v1/problems");
       expect(init.method).toBe("POST");
       expect(JSON.parse(init.body)).toEqual({ skill: "add-within-10", count: 5 });
     });
@@ -109,7 +109,7 @@ describe("StudyPlug", () => {
 
       expect(result).toEqual(mockResponse);
       const [url, init] = fetchFn.mock.calls[0];
-      expect(url).toBe("http://localhost:3001/api/v1/generate/single");
+      expect(url).toBe("http://localhost:3001/api/v1/problems/single");
       expect(JSON.parse(init.body)).toEqual({ skill: "add-within-10" });
     });
   });

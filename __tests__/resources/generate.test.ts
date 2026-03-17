@@ -14,7 +14,7 @@ function createMockFetch(responseData: unknown, status = 200) {
 
 describe("GenerateResource", () => {
   describe("batch (sp.generate())", () => {
-    it("sends POST to /api/v1/generate with params", async () => {
+    it("sends POST to /api/v1/problems with params", async () => {
       const mockData = {
         data: {
           items: [
@@ -48,7 +48,7 @@ describe("GenerateResource", () => {
       expect(result.meta.seed).toBe(42);
 
       const [url, init] = fetchFn.mock.calls[0];
-      expect(url).toBe("http://localhost:3001/api/v1/generate");
+      expect(url).toBe("http://localhost:3001/api/v1/problems");
       expect(init.method).toBe("POST");
       expect(JSON.parse(init.body)).toEqual({ skill: "add-within-10", count: 1, seed: 42 });
     });
@@ -70,7 +70,7 @@ describe("GenerateResource", () => {
   });
 
   describe("single (sp.generate.single())", () => {
-    it("sends POST to /api/v1/generate/single", async () => {
+    it("sends POST to /api/v1/problems/single", async () => {
       const mockData = {
         data: {
           item: {
@@ -95,7 +95,7 @@ describe("GenerateResource", () => {
       expect(result.data.answer.answer).toBe("5");
 
       const [url, init] = fetchFn.mock.calls[0];
-      expect(url).toBe("http://localhost:3001/api/v1/generate/single");
+      expect(url).toBe("http://localhost:3001/api/v1/problems/single");
       expect(JSON.parse(init.body)).toEqual({ skill: "add-within-10" });
     });
   });
@@ -108,7 +108,7 @@ describe("GenerateResource", () => {
           title: "Skill Not Found",
           status: 404,
           detail: "No skill found with slug 'nonexistent'",
-          instance: "/api/v1/generate/single",
+          instance: "/api/v1/problems/single",
         },
         404,
       );
@@ -124,7 +124,7 @@ describe("GenerateResource", () => {
           title: "Missing Required Field",
           status: 422,
           detail: "At least one of 'skill', 'skills', 'standard', 'standards', or 'subject' is required",
-          instance: "/api/v1/generate",
+          instance: "/api/v1/problems",
         },
         422,
       );

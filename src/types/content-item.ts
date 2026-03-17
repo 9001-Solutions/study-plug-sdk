@@ -1,5 +1,5 @@
 /**
- * ContentItem and all 12 content body types.
+ * ContentItem and all 18 content body types.
  * Mirrors @studyplug/core api-models/content-item.ts without Zod dependency.
  */
 
@@ -97,7 +97,8 @@ export interface DiagramContent {
     | "coordinate-plane"
     | "bar-model"
     | "clock"
-    | "ruler";
+    | "ruler"
+    | "visual-multiplication";
   diagramData: Record<string, unknown>;
   question: string;
   answer: string | number;
@@ -126,6 +127,80 @@ export interface DataTableContent {
   answer: string;
 }
 
+export interface PictureArithmeticContent {
+  type: "picture-arithmetic";
+  operand1: number;
+  operand2: number;
+  operator: "+" | "-";
+  iconType: string;
+}
+
+export interface SpellingActivityContent {
+  type: "spelling-activity";
+  exerciseType:
+    | "write-word"
+    | "unscramble"
+    | "complete-word"
+    | "find-misspelling"
+    | "write-contraction"
+    | "expand-contraction"
+    | "copy-word"
+    | "write-from-dictation";
+  word: string;
+  definition?: string;
+  scrambled?: string;
+  partial?: string;
+  misspellings?: string[];
+  fullForm?: string;
+  contraction?: string;
+  copyCount?: number;
+  showTracing?: boolean;
+}
+
+export interface WordBankContent {
+  type: "word-bank";
+  title?: string;
+  words: Array<{
+    word: string;
+    definition: string;
+    partOfSpeech?: string;
+    exampleSentence?: string;
+  }>;
+}
+
+export interface CategorySortingContent {
+  type: "category-sorting";
+  instructions: string;
+  categories: string[];
+  items: Array<{
+    item: string;
+    correctCategory: string;
+  }>;
+}
+
+export interface PhonicsWordListContent {
+  type: "phonics-word-list";
+  targetSound: string;
+  exerciseType?: string;
+  words: string[];
+  correctWords: string[];
+}
+
+export interface TracingActivityContent {
+  type: "tracing-activity";
+  exerciseType:
+    | "read-and-trace"
+    | "read-and-circle"
+    | "fill-missing"
+    | "rainbow-write"
+    | "match-word";
+  word: string;
+  traceSvg?: string;
+  sentence?: string;
+  choices?: string[];
+  correctIndex?: number;
+}
+
 export type ContentBody =
   | ArithmeticContent
   | MultipleChoiceContent
@@ -138,7 +213,13 @@ export type ContentBody =
   | DiagramContent
   | WordPuzzleContent
   | PictureCountingContent
-  | DataTableContent;
+  | PictureArithmeticContent
+  | DataTableContent
+  | SpellingActivityContent
+  | WordBankContent
+  | CategorySortingContent
+  | PhonicsWordListContent
+  | TracingActivityContent;
 
 export type ContentItemType = ContentBody["type"];
 
